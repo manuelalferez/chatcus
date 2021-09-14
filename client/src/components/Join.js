@@ -28,7 +28,7 @@ const Join = () => {
       </div>
       <Link
         onClick={(event) => (!name || !room ? event.preventDefault() : null)}
-        to={`/chat?${name}&${room}`}
+        to={`/chat?name=${name}&room=${room}`}
       >
         <button
           className="bg-green-700 text-white mt-4 p-4 rounded-md hover:bg-green-900"
