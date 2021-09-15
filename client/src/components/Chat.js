@@ -14,7 +14,9 @@ const Chat = ({ location }) => {
     setName(name);
     setRoom(room);
 
-    socket = io(ENDPOINT);
+    socket = io(ENDPOINT, {
+      transports: ["websocket"],
+    });
 
     socket.emit("join", { name, room });
   }, [ENDPOINT, location.search]);
