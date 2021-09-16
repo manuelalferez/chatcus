@@ -3,6 +3,7 @@ import queryString from "query-string";
 import { io } from "socket.io-client";
 import InfoBar from "./InfoBar";
 import Input from "./Input";
+import Messages from "./Messages";
 
 let socket;
 
@@ -52,6 +53,7 @@ const Chat = ({ location }) => {
   return (
     <div className="flex flex-col items-center mt-16">
       <InfoBar room={room} />
+      <Messages messages={messages} name={name} />
       <Input
         message={message}
         setMessage={setMessage}
