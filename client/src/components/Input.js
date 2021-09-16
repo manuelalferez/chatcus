@@ -6,12 +6,10 @@ const Input = ({ message, setMessage, sendMessage }) => {
       <input
         type="text"
         value={message}
+        onChange={(event) => setMessage(event.target.value)}
         placeholder="Type a message..."
-        onChange={(event) => {
-          setMessage(event.target.value);
-        }}
         onKeyPress={(event) =>
-          event.key === "Enter" ? sendMesssage(event) : null
+          event.key === "Enter" ? sendMessage(event) : null
         }
         className="p-4 w-full outline-none"
       />
