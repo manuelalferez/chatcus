@@ -1,6 +1,6 @@
 import React from "react";
-import closeIcon from "../../icons/closeIcon";
-import onlineIcon from "../../icons/onlineIcon";
+import closeIcon from "../../icons/closeIcon.png";
+import onlineIcon from "../../icons/onlineIcon.png";
 
 const InfoBar = ({ room }) => {
   return (
