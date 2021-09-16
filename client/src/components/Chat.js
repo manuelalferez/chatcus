@@ -49,7 +49,7 @@ const Chat = ({ location }) => {
   console.log(message, messages);
 
   return (
-    <div>
+    <div className="flex flex-col items-center mt-16">
       <InfoBar room={room} />
       <input
         value={message}
