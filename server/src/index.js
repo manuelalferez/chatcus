@@ -39,8 +39,8 @@ io.on("connection", (socket) => {
     const user = removeUser(socket.id);
     if (user) {
       io.to(user.room).emit("message", {
-        user: "Admin",
-        text: `${user.name} has left.`,
+        user: "admin",
+        text: `${user.name} has left`,
       });
     }
   });

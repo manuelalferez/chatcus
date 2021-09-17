@@ -1,8 +1,9 @@
 import React from "react";
+import sendIcon from "../../icons/sendIcon.png";
 
 const Input = ({ message, setMessage, sendMessage }) => {
   return (
-    <form className="flex justify-between items-center border-black border-2 w-4/6">
+    <form className="flex justify-between items-center bg-white rounded-b-xl shadow-xl w-4/6 border-t-4 border-blue-50">
       <input
         type="text"
         value={message}
@@ -11,13 +12,13 @@ const Input = ({ message, setMessage, sendMessage }) => {
         onKeyPress={(event) =>
           event.key === "Enter" ? sendMessage(event) : null
         }
-        className="p-4 w-full outline-none"
+        className="p-4 w-full outline-none rounded-bl-xl"
       />
       <button
         onClick={(event) => sendMessage(event)}
-        className="border-black border-l-2 p-4"
+        className="p-4 rounded-br-xl"
       >
-        Send
+        <img src={sendIcon} className="px-2 w-12 place-self-center" />
       </button>
     </form>
   );
