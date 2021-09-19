@@ -7,11 +7,11 @@ const Join = () => {
 
   return (
     <div className="flex flex-col items-center h-screen">
-      <h1 className="text-5xl mt-40 mb-5">Join</h1>
+      <h1 className="text-5xl mt-40 mb-10">Welcome to Chatcus!</h1>
       <div className="flex flex-col text-lg">
         <input
           placeholder="Name"
-          className="w-70 mb-2 p-2 bg-red-100 outline-none"
+          className="w-70 mb-2 p-2 bg-green-100 outline-none"
           type="text"
           onChange={(event) => {
             setName(event.target.value);
@@ -19,7 +19,7 @@ const Join = () => {
         ></input>
         <input
           placeholder="Room"
-          className="w-70 p-2 bg-red-100 outline-none"
+          className="w-70 p-2 bg-green-100 outline-none"
           type="text"
           onChange={(event) => {
             setRoom(event.target.value);

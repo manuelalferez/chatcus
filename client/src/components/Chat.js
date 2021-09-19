@@ -51,7 +51,7 @@ const Chat = ({ location }) => {
   console.log(message, messages);
 
   return (
-    <div className="flex flex-col items-center pt-16 bg-blue-50 h-screen">
+    <div className="flex flex-col items-center pt-16 bg-green-50 h-screen">
       <InfoBar room={room} />
       <Messages messages={messages} name={name} />
       <Input
