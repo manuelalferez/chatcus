@@ -4,7 +4,7 @@ import onlineIcon from "../../icons/onlineIcon.png";
 
 const InfoBar = ({ room }) => {
   return (
-    <div className="flex justify-between items-center w-4/6 bg-white rounded-t-xl p-4 shadow-xl pt-6">
+    <div className="flex justify-between items-center w-4/6 bg-white rounded-t-xl p-4 shadow-t-xl pt-6 border-b-2 border-blue-50">
       <div className="flex">
         <img
           src={onlineIcon}
