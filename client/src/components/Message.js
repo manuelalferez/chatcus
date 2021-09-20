@@ -24,7 +24,7 @@ const Message = ({ message: { user, text }, name }) => {
       </div>
     </div>
   ) : (
-    <div className="flex flex-col items-start p-2 rounded-t-xl rounded-r-xl w-max max-w-xs bg-green-500 shadow-md text-white m-2 overflow-hidden">
+    <div className="flex flex-col items-start p-2 rounded-t-xl rounded-r-xl w-max max-w-xs bg-green-500 shadow-md text-white m-2 overflow-hidden lg:max-w-lg">
       <p className="pl-2 text-green-100">{user}</p>
       <div>
         <p className="pl-2">{text}</p>
