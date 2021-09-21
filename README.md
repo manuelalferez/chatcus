@@ -63,8 +63,8 @@
 
 ## Structure
 
-* [client](https://github.com/manuelalferez/chat/tree/master/client): With all the Frontend logic
-* [server](https://github.com/manuelalferez/chat/tree/master/server): Where is the server located
+* [client](https://github.com/manuelalferez/chatcus/tree/master/client): With all the Frontend logic
+* [server](https://github.com/manuelalferez/chatcus/tree/master/server): Where is the server located
 
 ## Documentation 
 
@@ -72,5 +72,5 @@ You can learn more from the project in the [wiki](https://github.com/manuelalfer
 
 ## License 
 
-[GNU General Public License v3.0](https://github.com/manuelalferez/chat/blob/master/LICENSE.md)
+[GNU General Public License v3.0](https://github.com/manuelalferez/chatcus/blob/master/LICENSE.md)
 
