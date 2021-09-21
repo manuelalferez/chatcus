@@ -5,14 +5,6 @@
 <div align="center">
 	<img src="https://i.ibb.co/P9M1kNb/parth-shah-cactus-render-edited-removebg-preview-1.png" height="70px"/>
 </div>
-
-## How it looks like?
-
-
-
-
-![](https://i.ibb.co/SmFRsjh/BG-00-4.png)
-
 ## Installation 
 
 1. **Clone** the project. 
@@ -47,6 +39,13 @@
    npm start 
    ```
 
+## How it looks like?
+
+
+
+
+![](https://i.ibb.co/SmFRsjh/BG-00-4.png)
+
 ## Technologies 
 
 * [tailwindcss](https://tailwindcss.com/) for the CSS
@@ -59,12 +58,14 @@
 
 * [vercel](https://vercel.com/) to host the client 
 
-  
-
 ## Structure
 
 * [client](https://github.com/manuelalferez/chatcus/tree/master/client): With all the Frontend logic
 * [server](https://github.com/manuelalferez/chatcus/tree/master/server): Where is the server located
+
+## Contributing
+
+We would be really happy if you decide to contribute. Please read our [`CONTRIBUTING.md`](https://github.com/manuelalferez/chatcus/blob/master/doc/CONTRIBUTING.md) guide before 😊
 
 ## Documentation 
 
