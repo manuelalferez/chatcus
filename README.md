@@ -72,6 +72,10 @@ We would be really happy if you decide to contribute. Please read our [`CONTRIBU
 
 You can learn more from the project in the [wiki](https://github.com/manuelalferez/chatcus/wiki). 
 
+## Ask me 🤙
+
+You can always contact me via [Telegram](https://t.me/manuelalferez) if you want to talk more about the project 😊
+
 ## License 
 
 [GNU General Public License v3.0](https://github.com/manuelalferez/chatcus/blob/master/LICENSE.md)
