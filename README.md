@@ -68,7 +68,7 @@
 
 ## Documentation 
 
-You can learn more from the project in the [wiki](https://github.com/manuelalferez/chat/wiki). 
+You can learn more from the project in the [wiki](https://github.com/manuelalferez/chatcus/wiki). 
 
 ## License 
 
