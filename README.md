@@ -5,15 +5,64 @@
 <div align="center">
 	<img src="https://cdn-icons-png.flaticon.com/512/628/628277.png" height="70px"/>
 </div>
-
+## How it looks like?
 
 
 
 
 ![](https://i.ibb.co/SmFRsjh/BG-00-4.png)
 
+## Installation 
+
+1. **Clone** the project. 
+
+   ```bash
+   git clone https://github.com/manuelalferez/chat.git
+   ```
+
+2. **Install** packages. 
+
+   ```bash
+   cd client 
+   npm i 
+   cd .. 
+   cd server 
+   npm i
+   ```
+
+3. **Run** the server
+
+   ```bash
+   /server
+   
+   npm start 
+   ```
+
+4. **Run** the client 
+
+   ```bash
+   /client
+   
+   npm start 
+   ```
+
+## Technologies 
+
+* [tailwindcss](https://tailwindcss.com/) for the CSS
+* [Socket.IO](https://socket.io/) for the communication  
+* [Heroku](https://www.heroku.com/) to host the server
+* [vercel](https://vercel.com/) to host the client 
+
 ## Structure
 
 * client
 * server
+
+## Documentation 
+
+You can learn more from the project in the [wiki](https://github.com/manuelalferez/chat/wiki). 
+
+## License 
+
+[GNU General Public License v3.0](https://github.com/manuelalferez/chat/blob/master/LICENSE.md)
 
