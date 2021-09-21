@@ -50,14 +50,21 @@
 ## Technologies 
 
 * [tailwindcss](https://tailwindcss.com/) for the CSS
+
 * [Socket.IO](https://socket.io/) for the communication  
+
+* [Reactjs](https://reactjs.org/) for the Frontend
+
 * [Heroku](https://www.heroku.com/) to host the server
+
 * [vercel](https://vercel.com/) to host the client 
+
+  
 
 ## Structure
 
-* client
-* server
+* [client](https://github.com/manuelalferez/chat/tree/master/client): With all the Frontend logic
+* [server](https://github.com/manuelalferez/chat/tree/master/server): Where is the server located
 
 ## Documentation 
 
