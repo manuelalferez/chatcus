@@ -5,6 +5,7 @@
 <div align="center">
 	<img src="https://i.ibb.co/P9M1kNb/parth-shah-cactus-render-edited-removebg-preview-1.png" height="70px"/>
 </div>
+
 ## Installation 
 
 1. **Clone** the project. 
