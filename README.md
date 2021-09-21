@@ -3,7 +3,7 @@
 <p align="center"><i>A real-time chat application using React.js and Socket.IO</i></p>
 
 <div align="center">
-	<img src="https://cdn-icons-png.flaticon.com/512/628/628277.png" height="70px"/>
+	<img src="https://i.ibb.co/P9M1kNb/parth-shah-cactus-render-edited-removebg-preview-1.png" height="70px"/>
 </div>
 
 ## How it looks like?
