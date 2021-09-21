@@ -3,7 +3,7 @@ import sendIcon from "../../icons/sendIcon.png";
 
 const Input = ({ message, setMessage, sendMessage }) => {
   return (
-    <form className="flex justify-between items-center bg-white rounded-b-xl shadow-xl w-4/6 lg:w-3/6 border-t-4 border-blue-50">
+    <form className="flex justify-between items-center bg-white rounded-b-xl shadow-xl w-5/6 md:w-4/6 lg:w-3/6 lg:w-3/6 border-t-4 border-blue-50">
       <input
         type="text"
         value={message}
