@@ -18,7 +18,7 @@ const Message = ({ message: { user, text }, name }) => {
         </div>
       </div>
       <div class="col-start-6 col-end-7 text-center">
-        <img class="inline object-cover w-8 h-8 rounded-full" src="https://p.kindpng.com/picc/s/78-785827_user-profile-avatar-login-account-male-user-icon.png" alt="Profile image"/><br/>
+        <img class="inline object-cover w-8 h-8 rounded-full" src="https://cdn-icons-png.flaticon.com/512/709/709722.png" alt="Profile image"/><br/>
         <div>
           <p className="pr-2">{trimmedName}</p>
         </div>
@@ -33,14 +33,14 @@ const Message = ({ message: { user, text }, name }) => {
   ) : (
     <div class="grid grid-cols-6">
       <div class="col-start-1 col-end-2 text-center">
-        <img class="inline object-cover w-8 h-8 rounded-full" src="https://p.kindpng.com/picc/s/78-785827_user-profile-avatar-login-account-male-user-icon.png" alt="Profile image"/><br/>
+        <img class="inline object-cover w-8 h-8 rounded-full" src="https://cdn-icons-png.flaticon.com/512/709/709722.png" alt="Profile image"/><br/>
         <div>
           <p className="pr-2">{user}</p>
         </div>
       </div>
       <div class="col-start-2 col-end-7">
       <div className="flex flex-col items-start p-2 rounded-t-xl rounded-r-xl w-max max-w-xs bg-green-500 shadow-md text-white m-2 overflow-hidden lg:max-w-lg">
-          <p className="text-green-900 pr-2">{text}</p>
+          <p className="text-green-100 pr-2">{text}</p>
         </div>
       </div>
       
