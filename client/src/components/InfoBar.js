@@ -11,7 +11,7 @@ const InfoBar = ({ room }) => {
           alt="online"
           className="h-3 ml-5 place-self-center"
         />
-        <h3 className="ml-1 place-self-center">{room}</h3>
+        <h3 className="ml-1.5 place-self-center font-bold text-gray-600">{room}</h3>
       </div>
       <div>
         <a href="/">

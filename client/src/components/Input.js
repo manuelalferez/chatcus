@@ -12,11 +12,11 @@ const Input = ({ message, setMessage, sendMessage }) => {
         onKeyPress={(event) =>
           event.key === "Enter" ? sendMessage(event) : null
         }
-        className="p-4 w-full outline-none rounded-bl-xl"
+        className="p-4 w-full outline-none rounded-bl-xl text-gray-800"
       />
       <button
         onClick={(event) => sendMessage(event)}
-        className="p-4 rounded-br-xl"
+        className="p-4 rounded-br-xl hover:bg-gray-100 transition duration-150 ease-out"
       >
         <img src={sendIcon} className="px-2 w-12 place-self-center" />
       </button>
