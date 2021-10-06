@@ -43,7 +43,6 @@ const Message = ({ message: { user, text }, name }) => {
           <p className="text-green-100 pr-2">{text}</p>
         </div>
       </div>
-      
     </div>
   );
 };
