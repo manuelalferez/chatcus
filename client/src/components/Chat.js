@@ -43,6 +43,11 @@ const Chat = ({ location }) => {
     });
   }, []);
 
+  /*
+  * Takes the message to be sent and a callback
+  * that should be called after sending the message
+  * (Refactored for separation of concerns)
+  */
   const sendMesssage = (message, callback) => {
     if (message) {
       socket.emit("sendMessage", message, () => callback());
