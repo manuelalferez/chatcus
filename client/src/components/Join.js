@@ -7,10 +7,7 @@ const Join = () => {
 
   return (
     <div className="flex flex-col items-center h-screen">
-      <h1
-        className="sm:text-3xl md:text-5xl mt-40 mb-10"
-        style={{ overflowY: "hidden" }}
-      >
+      <h1 className="sm:text-3xl md:text-5xl mt-40 mb-10 overflow-y-hidden">
         Welcome to Chatcus!
       </h1>
       <div className="flex flex-col sm:text-sm md:text-lg">
