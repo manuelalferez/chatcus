@@ -14,7 +14,7 @@ const InfoBar = ({ room, name }) => {
         />
         <h3 className="ml-1 place-self-center">{room}</h3>
         <ShareButton
-          link={encodeURIComponent(`${window.location.origin}/#/?room=${room}`)}
+          link={`${window.location.origin}/#/?room=${room}`}
           text={`Hey! ${name} invites you to join ${room} Chat Room on Chatcus`}
         />
       </div>

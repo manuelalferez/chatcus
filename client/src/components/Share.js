@@ -30,7 +30,7 @@ export const ShareButton = ({ link, text }) => {
       navigator
         .share({
           title: text,
-          url: decodeURIComponent(link),
+          url: link,
         })
         .then(() => {
           console.log("Thanks for sharing!");
@@ -39,7 +39,7 @@ export const ShareButton = ({ link, text }) => {
     }
   };
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(decodeURIComponent(link)).then(() => {
+    navigator.clipboard.writeText(link).then(() => {
       setLinkCopied(true);
     });
   };
@@ -93,7 +93,7 @@ export const ShareButton = ({ link, text }) => {
             {SHARE_OPTIONS.map((option, i) => (
               <a
                 key={option.type}
-                href={option.url(link, text)}
+                href={option.url(encodeURIComponent(link), text)}
                 className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100 text-gray-900"
                 role="menuitem"
                 tabIndex={dropdownState ? 0 : -1}
