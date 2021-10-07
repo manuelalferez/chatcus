@@ -13,15 +13,25 @@ const Message = ({ message: { user, text }, name }) => {
     isSentByCurrentUser = true;
   }
   return isSentByCurrentUser ? (
-    // This user's message
+    // Current user's message
     <motion.div
       initial={{ scale: 0, x: "70%", opacity: 0.3 }}
       animate={{ scale: 1, x: 0, opacity: 1 }}
-      className="flex flex-col ml-auto p-2 rounded-t-xl rounded-l-xl bg-green-100 shadow-md m-2 w-max max-w-xs lg:max-w-lg overflow-hidden"
+      className="grid grid-cols-6"
     >
-      <p className="text-green-900 pr-2 text-sm font-semibold">{trimmedName}</p>
-      <div>
-        <p className="pr-2 pb-2 text-gray-600">{text}</p>
+      <div className="col-start-1 col-end-6">
+        <div className="flex flex-col ml-auto p-2 rounded-t-xl rounded-l-xl bg-green-100 shadow-md m-2 w-max max-w-xs lg:max-w-lg overflow-hidden">
+          <p className="text-green-900 text-sm font-semibold">{trimmedName}</p>
+          <p className="pr-2 text-gray-600">{text}</p>
+        </div>
+      </div>
+      <div className="col-start-6 col-end-7 text-center">
+        <img
+          className="inline object-cover w-8 h-8 rounded-full"
+          src="https://cdn-icons-png.flaticon.com/512/709/709722.png"
+          alt="Profile image"
+        />
+        <br />
       </div>
     </motion.div>
   ) : isAdmin ? (
@@ -40,11 +50,21 @@ const Message = ({ message: { user, text }, name }) => {
     <motion.div
       initial={{ scale: 0, x: "-70%", opacity: 0.3 }}
       animate={{ scale: 1, x: 0, opacity: 1 }}
-      className="flex flex-col items-start p-2 rounded-t-xl rounded-r-xl w-max max-w-xs bg-green-500 shadow-md text-white m-2 overflow-hidden lg:max-w-lg"
+      className="grid grid-cols-6"
     >
-      <p className="pl-2 pb-2 text-green-100 text-sm font-semibold">{user}</p>
-      <div>
-        <p className="pl-2">{text}</p>
+      <div className="col-start-1 col-end-2 text-center">
+        <img
+          className="inline object-cover w-8 h-8 rounded-full"
+          src="https://cdn-icons-png.flaticon.com/512/709/709722.png"
+          alt="Profile image"
+        />
+        <br />
+      </div>
+      <div className="col-start-2 col-end-7">
+        <div className="flex flex-col items-start p-2 rounded-t-xl rounded-r-xl w-max max-w-xs bg-green-500 shadow-md text-white m-2 overflow-hidden lg:max-w-lg">
+          <p className="text-sm font-semibold">{user}</p>
+          <p className="pr-2">{text}</p>
+        </div>
       </div>
     </motion.div>
   );
