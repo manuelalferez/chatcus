@@ -30,7 +30,7 @@ export const ShareButton = ({ link, text }) => {
       navigator
         .share({
           title: text,
-          url: link,
+          url: decodeURIComponent(link),
         })
         .then(() => {
           console.log("Thanks for sharing!");
