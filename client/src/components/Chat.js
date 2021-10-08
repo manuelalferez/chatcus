@@ -10,7 +10,7 @@ let socket;
 const Chat = ({ location }) => {
   const [name, setName] = useState("");
   const [room, setRoom] = useState("");
-  const [message, setMessage] = useState("");
+  // const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const ENDPOINT = "https://chatcus.herokuapp.com/";
 
@@ -22,6 +22,8 @@ const Chat = ({ location }) => {
     socket = io(ENDPOINT, {
       transports: ["websocket"],
     });
+
+    console.log("Connected", socket.connected);
 
     socket.emit("join", { name, room }, (error) => {
       if (error) {
@@ -41,14 +43,17 @@ const Chat = ({ location }) => {
     });
   }, []);
 
-  const sendMessage = (event) => {
-    event.preventDefault();
+
+  /*
+  * Takes the message to be sent and a callback
+  * that should be called after sending the message
+  * (Refactored for separation of concerns)
+  */
+  const sendMesssage = (message, callback) => {
     if (message) {
-      socket.emit("sendMessage", message, () => setMessage(""));
+      socket.emit("sendMessage", message, () => callback());
     }
   };
-
-  console.log(message, messages);
 
   return (
     <div className="flex flex-col items-center pt-16 bg-green-50 h-screen">

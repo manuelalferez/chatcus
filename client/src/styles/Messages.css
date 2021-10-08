@@ -1,0 +1,15 @@
+* {
+  overflow-x: hidden;
+}
+
+body *::-webkit-scrollbar {
+  width: 0.4em;
+  /* gren-50 */
+  background-color: #ecfdf5;
+}
+
+body *::-webkit-scrollbar-thumb {
+  /* green-500 */
+  background-color: #6ee7b7;
+  border-radius: 0.2em;
+}
