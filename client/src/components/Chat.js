@@ -41,14 +41,11 @@ const Chat = ({ location }) => {
     });
   }, []);
 
-  const sendMessage = (event) => {
-    event.preventDefault();
+  const sendMessage = (message, callback) => {
     if (message) {
-      socket.emit("sendMessage", message, () => setMessage(""));
+      socket.emit("sendMessage", message, () => callback());
     }
   };
-
-  console.log(message, messages);
 
   return (
     <div className="flex flex-col items-center pt-16 bg-green-50 h-screen">
