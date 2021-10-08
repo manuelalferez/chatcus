@@ -43,6 +43,7 @@ const Chat = ({ location }) => {
     });
   }, []);
 
+
   /*
   * Takes the message to be sent and a callback
   * that should be called after sending the message
@@ -54,16 +55,14 @@ const Chat = ({ location }) => {
     }
   };
 
-  // console.log(message, messages);
-
   return (
     <div className="flex flex-col items-center pt-16 bg-green-50 h-screen">
-      <InfoBar room={room} />
+      <InfoBar room={room} name={name} />
       <Messages messages={messages} name={name} />
       <Input
-        // message={message}
-        // setMessage={setMessage}
-        sendMessage={sendMesssage}
+        message={message}
+        setMessage={setMessage}
+        sendMessage={sendMessage}
       />
     </div>
   );
