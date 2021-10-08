@@ -4,6 +4,7 @@ import { io } from "socket.io-client";
 import InfoBar from "./InfoBar";
 import Input from "./Input";
 import Messages from "./Messages";
+import { showNotification } from "../utils/notification";
 
 let socket;
 
@@ -37,6 +38,7 @@ const Chat = ({ location }) => {
 
   useEffect(() => {
     socket.on("message", (message) => {
+      showNotification(message);
       setMessages((messages) => [...messages, message]);
     });
   }, []);
