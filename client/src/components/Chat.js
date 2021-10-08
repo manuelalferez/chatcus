@@ -23,8 +23,6 @@ const Chat = ({ location }) => {
       transports: ["websocket"],
     });
 
-    console.log("Connected", socket.connected);
-
     socket.emit("join", { name, room }, (error) => {
       if (error) {
         alert(error);
@@ -43,11 +41,6 @@ const Chat = ({ location }) => {
     });
   }, []);
 
-  /*
-   * Takes the message to be sent and a callback
-   * that should be called after sending the message
-   * (Refactored for separation of concerns)
-   */
   const sendMessage = (message, callback) => {
     if (message) {
       socket.emit("sendMessage", message, () => callback());
