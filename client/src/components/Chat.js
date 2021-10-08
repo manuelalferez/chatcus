@@ -10,7 +10,7 @@ let socket;
 const Chat = ({ location }) => {
   const [name, setName] = useState("");
   const [room, setRoom] = useState("");
-  // const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const ENDPOINT = "https://chatcus.herokuapp.com/";
 
@@ -43,13 +43,12 @@ const Chat = ({ location }) => {
     });
   }, []);
 
-
   /*
-  * Takes the message to be sent and a callback
-  * that should be called after sending the message
-  * (Refactored for separation of concerns)
-  */
-  const sendMesssage = (message, callback) => {
+   * Takes the message to be sent and a callback
+   * that should be called after sending the message
+   * (Refactored for separation of concerns)
+   */
+  const sendMessage = (message, callback) => {
     if (message) {
       socket.emit("sendMessage", message, () => callback());
     }

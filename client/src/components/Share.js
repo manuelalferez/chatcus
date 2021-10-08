@@ -48,7 +48,7 @@ export const ShareButton = ({ link, text }) => {
   }, [dropdownState]);
   return (
     <React.Fragment>
-      <div className="relative inline-block text-left">
+      <div className="relative inline-block text-left overflow-y-hidden">
         <div className="flex">
           <button
             type="button"
