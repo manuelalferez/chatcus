@@ -1,5 +1,5 @@
 import React from "react";
-import sendIcon from "../../icons/sendIcon.png";
+import sendIcon from "../assets/icons/sendIcon.png";
 
 const Input = ({ message, setMessage, sendMessage }) => {
   return (
