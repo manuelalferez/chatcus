@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const SHARE_OPTIONS = [
   {
@@ -70,10 +71,10 @@ export const ShareButton = ({ link, text }) => {
           </button>
         </div>
 
-        <div
-          className={`origin-top-right absolute mt-2 w-52 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-10 ${
-            dropdownState ? "" : "opacity-0"
-          }`}
+        <motion.div
+          initial={{ scale: 0, opacity: 0, x: "-70%" }}
+          animate={dropdownState ? { scale: 1, x: 0, opacity: 1 } : {}}
+          className={`origin-top-right fixed mt-2 w-52 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-10 `}
           role="menu"
           aria-orientation="vertical"
           aria-labelledby="menu-button"
@@ -114,7 +115,7 @@ export const ShareButton = ({ link, text }) => {
               Share Post Via...
             </button>
           </div>
-        </div>
+        </motion.div>
       </div>
       <div
         style={{ zIndex: dropdownState ? "1" : "-1" }}
