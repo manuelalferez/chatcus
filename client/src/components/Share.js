@@ -101,7 +101,7 @@ export const ShareButton = ({ link, text }) => {
                 id={`menu-item-${i + 1}`}
                 target="_blank"
               >
-                Share to {option.type}
+                Share to {option.type} <img src={require(`../../icons/${option.type}.png`)} alt={`${option.type}`} className="h-7 ml-5 inline-block float-right"/>
               </a>
             ))}
             <button
