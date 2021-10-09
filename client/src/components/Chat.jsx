@@ -2,6 +2,7 @@ import queryString from 'query-string';
 import React, { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 
+import { showNotification } from '../utils/notification';
 import InfoBar from './InfoBar';
 import Input from './Input';
 import Messages from './Messages';
@@ -38,24 +39,22 @@ const Chat = ({ location }) => {
 
   useEffect(() => {
     socket.on('message', (message) => {
+      showNotification(message);
       setMessages((messages) => [...messages, message]);
     });
   }, []);
 
-  const sendMesssage = (event) => {
-    event.preventDefault();
+  const sendMessage = (message, callback) => {
     if (message) {
-      socket.emit('sendMessage', message, () => setMessage(''));
+      socket.emit('sendMessage', message, () => callback());
     }
   };
 
-  console.log(message, messages);
-
   return (
     <div className="flex flex-col items-center pt-16 bg-green-50 h-screen">
-      <InfoBar room={room} />
+      <InfoBar room={room} name={name} />
       <Messages messages={messages} name={name} />
-      <Input message={message} setMessage={setMessage} sendMessage={sendMesssage} />
+      <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
     </div>
   );
 };

@@ -33,14 +33,6 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
-    'jsx-a11y/anchor-is-valid': [
-      'error',
-      {
-        components: ['Link'],
-        specialLink: ['hrefLeft', 'hrefRight'],
-        aspects: ['invalidHref', 'preferButton'],
-      },
-    ],
     'jsx-a11y/alt-text': [
       2,
       {
@@ -51,5 +43,8 @@ module.exports = {
         'input[type="image"]': ['InputImage'],
       },
     ],
+    'jsx-a11y/no-static-element-interactions': [0],
+    'jsx-a11y/click-events-have-key-events': [0],
+    'jsx-a11y/anchor-is-valid': [0],
   },
 };
