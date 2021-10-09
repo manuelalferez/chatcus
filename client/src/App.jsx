@@ -1,7 +1,8 @@
-import React from 'react'
-import { Switch, Route, HashRouter } from "react-router-dom";
-import Chat from "./components/Chat";
-import Join from "./components/Join";
+import React from 'react';
+import { HashRouter, Route, Switch } from 'react-router-dom';
+
+import Chat from './components/Chat';
+import Join from './components/Join';
 const App = () => {
   return (
     <HashRouter>
@@ -13,4 +14,4 @@ const App = () => {
   );
 };
 
-export default App
+export default App;
