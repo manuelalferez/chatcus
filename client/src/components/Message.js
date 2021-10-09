@@ -2,7 +2,7 @@ import React from "react";
 
 import { motion } from "framer-motion";
 
-const Message = ({ message: { user, text }, name }) => {
+const Message = ({ message: { user, text, pfpSrc }, name }) => {
   let isSentByCurrentUser = false;
   let isAdmin = false;
 
@@ -27,9 +27,12 @@ const Message = ({ message: { user, text }, name }) => {
       </div>
       <div className="col-start-6 col-end-7 text-center">
         <img
-          className="inline object-cover w-8 h-8 rounded-full"
-          src="https://cdn-icons-png.flaticon.com/512/709/709722.png"
-          alt="Profile image"
+          className="inline object-cover w-14 h-14 rounded-full"
+          // src="https://cdn-icons-png.flaticon.com/512/709/709722.png"
+          src={
+            pfpSrc || "https://cdn-icons-png.flaticon.com/512/709/709722.png"
+          }
+          alt={`Profile image-${user}`}
         />
         <br />
       </div>
@@ -54,8 +57,11 @@ const Message = ({ message: { user, text }, name }) => {
     >
       <div className="col-start-1 col-end-2 text-center">
         <img
-          className="inline object-cover w-8 h-8 rounded-full"
-          src="https://cdn-icons-png.flaticon.com/512/709/709722.png"
+          className="inline object-cover w-14 h-14 rounded-full"
+          // src="https://cdn-icons-png.flaticon.com/512/709/709722.png"
+          src={
+            pfpSrc || "https://cdn-icons-png.flaticon.com/512/709/709722.png"
+          }
           alt="Profile image"
         />
         <br />

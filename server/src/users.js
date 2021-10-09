@@ -1,6 +1,6 @@
 const users = [];
 
-const addUser = ({ id, name, room }) => {
+const addUser = ({ id, name, room, pfpSrc }) => {
   name = name.trim().toLowerCase();
   room = room.trim().toLowerCase();
 
@@ -11,8 +11,10 @@ const addUser = ({ id, name, room }) => {
   if (!name || !room) return { error: "Username and room are required." };
   if (existingUser) return { error: "Username is taken." };
 
-  const user = { id, name, room };
+  const user = { id, name, room, pfpSrc };
 
+  // console.log("============ New user added! =============");
+  // console.log(user);
   users.push(user);
 
   return { user };

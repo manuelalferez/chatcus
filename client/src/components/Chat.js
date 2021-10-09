@@ -13,10 +13,33 @@ const Chat = ({ location }) => {
   const [room, setRoom] = useState("");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
-  const ENDPOINT = "https://chatcus.herokuapp.com/";
+
+  /*
+   * Endpoiny should be heroku when deployed.
+   * While in development and making changes
+   * to server code, use localhost endpoint
+   * should be used.
+   */
+  // const ENDPOINT = "https://chatcus.herokuapp.com/";
+  const ENDPOINT = "http://localhost:5000/";
+
+  /**
+   * Joins a room using username, room name and profile pic image link
+   *
+   * @param {string} name The username to be used to join the room
+   * @param {string} room The name of the room to join
+   * @param {string} pfpSrc The image link to the desired profile pic to be used
+   */
+  const joinRoom = (name, room, pfpSrc) => {
+    socket.emit("join", { name, room, pfpSrc }, (error) => {
+      if (error) {
+        alert(error);
+      }
+    });
+  };
 
   useEffect(() => {
-    const { name, room } = queryString.parse(location.search);
+    const { name, room, pfp: pfpSrc } = queryString.parse(location.search);
     setName(name);
     setRoom(room);
 
@@ -24,11 +47,12 @@ const Chat = ({ location }) => {
       transports: ["websocket"],
     });
 
-    socket.emit("join", { name, room }, (error) => {
-      if (error) {
-        alert(error);
-      }
-    });
+    // socket.emit("join", { name, room }, (error) => {
+    //   if (error) {
+    //     alert(error);
+    //   }
+    // });
+    joinRoom(name, room, pfpSrc);
 
     return () => {
       socket.emit("disconnect");
