@@ -1,18 +1,12 @@
-import React from "react";
+import React from 'react';
 
 const VARIANTS = {
-  success: "green",
-  error: "red",
-  warning: "yellow",
-  default: "blue",
+  success: 'green',
+  error: 'red',
+  warning: 'yellow',
+  default: 'blue',
 };
-export const NotificationBar = ({
-  variant,
-  header,
-  message,
-  onClose,
-  onBodyClick,
-}) => {
+export const NotificationBar = ({ variant, header, message, onClose, onBodyClick }) => {
   const color = VARIANTS[variant];
   return (
     <div
@@ -29,7 +23,7 @@ export const NotificationBar = ({
         }}
         onKeyUp={(e) => {
           e.stopPropagation();
-          e.key === "Enter" && onBodyClick(e);
+          e.key === 'Enter' && onBodyClick(e);
         }}
         className="block mr-10 sm:inline"
       >
@@ -44,7 +38,7 @@ export const NotificationBar = ({
         }}
         onKeyUp={(e) => {
           e.stopPropagation();
-          e.key === "Enter" && onClose(e);
+          e.key === 'Enter' && onClose(e);
         }}
         className="absolute top-0 bottom-0 right-0 px-4 py-3"
       >

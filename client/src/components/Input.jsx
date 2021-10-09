@@ -12,7 +12,8 @@ const Input = ({ message, setMessage, sendMessage }) => {
         sendMessage(message, () => {
           setMessage('');
         });
-      }}>
+      }}
+    >
       <input
         type="text"
         value={message}
@@ -22,7 +23,8 @@ const Input = ({ message, setMessage, sendMessage }) => {
       />
       <button
         type="submit"
-        className="p-4 transition duration-150 ease-in rounded-br-xl hover:bg-green-100">
+        className="p-4 transition duration-150 ease-in rounded-br-xl hover:bg-green-100"
+      >
         <img src={sendIcon} className="w-12 px-2 place-self-center" alt="" />
       </button>
     </form>

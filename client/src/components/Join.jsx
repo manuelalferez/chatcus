@@ -24,7 +24,8 @@ const Join = ({ location }) => {
           type="text"
           onChange={(event) => {
             setName(event.target.value);
-          }}></input>
+          }}
+        ></input>
         <input
           placeholder="Room"
           className="p-2 bg-green-100 outline-none w-70"
@@ -32,14 +33,17 @@ const Join = ({ location }) => {
           value={room}
           onChange={(event) => {
             setRoom(event.target.value);
-          }}></input>
+          }}
+        ></input>
       </div>
       <Link
         onClick={(event) => (!name || !room ? event.preventDefault() : null)}
-        to={`/chat?name=${name}&room=${room}`}>
+        to={`/chat?name=${name}&room=${room}`}
+      >
         <button
           className="p-4 mt-4 text-white bg-green-700 rounded-md sm:text-sm md:text-lg hover:bg-green-900"
-          type="submit">
+          type="submit"
+        >
           Sign in
         </button>
       </Link>

@@ -1,25 +1,23 @@
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
 
 const SHARE_OPTIONS = [
   {
-    type: "LinkedIn",
+    type: 'LinkedIn',
     url: (url, text) =>
       `https://www.linkedin.com/shareArticle?mini=true&title=${text}&source=Chatcus&url=${url}`,
   },
   {
-    type: "Facebook",
+    type: 'Facebook',
     url: (url) => `https://www.facebook.com/sharer/sharer.php?u=${url}`,
   },
   {
-    type: "Twitter",
-    url: (url, text) =>
-      `https://twitter.com/intent/tweet?text=${text}&url=${url}`,
+    type: 'Twitter',
+    url: (url, text) => `https://twitter.com/intent/tweet?text=${text}&url=${url}`,
   },
   {
-    type: "Reddit",
-    url: (url, text) =>
-      `https://www.reddit.com/submit?title=${text}&url=${url}`,
+    type: 'Reddit',
+    url: (url, text) => `https://www.reddit.com/submit?title=${text}&url=${url}`,
   },
 ];
 
@@ -34,7 +32,7 @@ export const ShareButton = ({ link, text }) => {
           url: link,
         })
         .then(() => {
-          console.log("Thanks for sharing!");
+          console.log('Thanks for sharing!');
         })
         .catch(console.error);
     }
@@ -72,7 +70,7 @@ export const ShareButton = ({ link, text }) => {
         </div>
 
         <motion.div
-          initial={{ scale: 0, opacity: 0, x: "-70%" }}
+          initial={{ scale: 0, opacity: 0, x: '-70%' }}
           animate={dropdownState ? { scale: 1, x: 0, opacity: 1 } : {}}
           className={`origin-top-right fixed mt-2 w-52 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-10 `}
           role="menu"
@@ -89,7 +87,7 @@ export const ShareButton = ({ link, text }) => {
               id="menu-item-0"
               onClick={copyToClipboard}
             >
-              {linkCopied ? "Copied to Clipboard" : "Copy Link"}
+              {linkCopied ? 'Copied to Clipboard' : 'Copy Link'}
             </button>
             {SHARE_OPTIONS.map((option, i) => (
               <a
@@ -100,6 +98,7 @@ export const ShareButton = ({ link, text }) => {
                 tabIndex={dropdownState ? 0 : -1}
                 id={`menu-item-${i + 1}`}
                 target="_blank"
+                rel="noreferrer"
               >
                 Share to {option.type}
               </a>
@@ -118,7 +117,7 @@ export const ShareButton = ({ link, text }) => {
         </motion.div>
       </div>
       <div
-        style={{ zIndex: dropdownState ? "1" : "-1" }}
+        style={{ zIndex: dropdownState ? '1' : '-1' }}
         onClick={() => setDropdownState(false)}
         className="fixed top-0 left-0 w-full h-full"
       ></div>
