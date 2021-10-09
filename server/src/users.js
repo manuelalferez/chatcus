@@ -13,8 +13,6 @@ const addUser = ({ id, name, room, pfpSrc }) => {
 
   const user = { id, name, room, pfpSrc };
 
-  // console.log("============ New user added! =============");
-  // console.log(user);
   users.push(user);
 
   return { user };
