@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "start": "vite",
     "build": "vite build",
     "serve": "vite preview",
     "lint:fix": "eslint ./src --ext .jsx,.js,.ts,.tsx --quiet --fix --ignore-path ./.gitignore",
