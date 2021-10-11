@@ -37,7 +37,13 @@ const Join = ({ location }) => {
         ></input>
       </div>
       <Link
-        onClick={(event) => (!name || !room ? event.preventDefault() : null)}
+        onClick={(event) => {
+          if(!name || !room){
+            alert("Username and room are required!");
+            return event.preventDefault();
+          }
+          return null;
+        }}
         to={`/chat?name=${name}&room=${room}`}
       >
         <button
