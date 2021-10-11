@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
-import closeIcon from "../../icons/closeIcon.png";
-import onlineIcon from "../../icons/onlineIcon.png";
-import { NotificationBar } from "./Notification";
-import { ShareButton } from "./Share";
-import { requestPermission } from "../utils/notification";
+import React, { useEffect, useState } from 'react';
+
+import closeIcon from '../assets/icons/closeIcon.png';
+import onlineIcon from '../assets/icons/onlineIcon.png';
+import { requestPermission } from '../utils/notification';
+import { NotificationBar } from './Notification';
+import { ShareButton } from './Share';
 
 const InfoBar = ({ room, name }) => {
   const [showPermissionMsg, setShowPermissionMsg] = useState(false);
@@ -16,7 +17,7 @@ const InfoBar = ({ room, name }) => {
   }, []);
   return (
     <React.Fragment>
-      {showPermissionMsg && Notification.permission === "default" ? (
+      {showPermissionMsg && Notification.permission === 'default' ? (
         <NotificationBar
           variant="default"
           header={`Hi ${name}`}
@@ -28,13 +29,9 @@ const InfoBar = ({ room, name }) => {
           }}
         />
       ) : null}
-      <div className="flex justify-between items-center w-5/6 md:w-4/6 lg:w-3/6 bg-white rounded-t-xl p-4 shadow-t-3xl pt-6 border-b-2 border-blue-50">
+      <div className="flex items-center justify-between w-5/6 p-4 pt-6 bg-white border-b-2 md:w-4/6 lg:w-3/6 rounded-t-xl shadow-t-3xl border-blue-50">
         <div className="flex items-center">
-          <img
-            src={onlineIcon}
-            alt="online"
-            className="h-3 ml-5 place-self-center"
-          />
+          <img src={onlineIcon} alt="online" className="h-3 ml-5 place-self-center" />
           <h3 className="ml-1 place-self-center">{room}</h3>
           <ShareButton
             link={`${window.location.origin}/#/?room=${room}`}
@@ -43,7 +40,7 @@ const InfoBar = ({ room, name }) => {
         </div>
         <div>
           <a href="/">
-            <img src={closeIcon} alt="close" className="h-7 p-2" />
+            <img src={closeIcon} alt="close" className="p-2 h-7" />
           </a>
         </div>
       </div>
