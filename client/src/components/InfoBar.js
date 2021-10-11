@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
 import closeIcon from "../../icons/closeIcon.png";
 import onlineIcon from "../../icons/onlineIcon.png";
-import { NotificationBar } from "./atoms/Notification";
+import { NotificationBar } from "./Notification";
 import { ShareButton } from "./Share";
 import { requestPermission } from "../utils/notification";
-import { Modal } from "./atoms/Modal";
 
 const InfoBar = ({ room, name }) => {
-  const history = useHistory();
   const [showPermissionMsg, setShowPermissionMsg] = useState(false);
-  const [showCloseModal, setShowCloseModal] = useState(false);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -18,7 +14,6 @@ const InfoBar = ({ room, name }) => {
     }, 10000);
     return () => clearTimeout(timeout);
   }, []);
-
   return (
     <React.Fragment>
       {showPermissionMsg && Notification.permission === "default" ? (
@@ -47,20 +42,11 @@ const InfoBar = ({ room, name }) => {
           />
         </div>
         <div>
-          <button type="button" onClick={() => setShowCloseModal(true)}>
+          <a href="/">
             <img src={closeIcon} alt="close" className="h-7 p-2" />
-          </button>
+          </a>
         </div>
       </div>
-      {showCloseModal && (
-        <Modal
-          data={{ header: "You are about to exist the chat room" }}
-          actions={{
-            onCancel: () => setShowCloseModal(false),
-            onConfirm: () => history.push("/"),
-          }}
-        />
-      )}
     </React.Fragment>
   );
 };
