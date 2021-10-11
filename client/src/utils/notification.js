@@ -9,12 +9,9 @@ export const showNotification = (message) => {
   if (checkNotificationSupport()) return;
   if (document.visibilityState === 'hidden' && Notification.permission === 'granted') {
     try {
-      const notification = new Notification(
-        `${message.user?.toUpperCase()} just send a message`,
-        {
-          body: message.text,
-        },
-      );
+      const notification = new Notification(`${message.user?.toUpperCase()} just send a message`, {
+        body: message.text,
+      });
       notification.onclick = () => {
         window.parent.focus();
         notification.close();
