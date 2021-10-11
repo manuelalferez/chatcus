@@ -14,13 +14,11 @@ const Join = ({ location }) => {
   }, []);
   return (
     <div className="flex flex-col items-center h-screen">
-      <h1 className="mt-40 mb-10 overflow-y-hidden sm:text-3xl md:text-5xl">
-        Welcome to Chatcus!
-      </h1>
+      <h1 className="sm:text-3xl md:text-5xl mt-40 mb-10 overflow-y-hidden">Welcome to Chatcus!</h1>
       <div className="flex flex-col sm:text-sm md:text-lg">
         <input
           placeholder="Name"
-          className="p-2 mb-2 bg-green-100 outline-none w-70"
+          className="w-70 mb-2 p-2 bg-green-100 outline-none"
           type="text"
           onChange={(event) => {
             setName(event.target.value);
@@ -28,7 +26,7 @@ const Join = ({ location }) => {
         ></input>
         <input
           placeholder="Room"
-          className="p-2 bg-green-100 outline-none w-70"
+          className="w-70 p-2 bg-green-100 outline-none"
           type="text"
           value={room}
           onChange={(event) => {
@@ -38,8 +36,8 @@ const Join = ({ location }) => {
       </div>
       <Link
         onClick={(event) => {
-          if(!name || !room){
-            alert("Username and room are required!");
+          if (!name || !room) {
+            alert('Username and room are required!');
             return event.preventDefault();
           }
           return null;
@@ -47,7 +45,7 @@ const Join = ({ location }) => {
         to={`/chat?name=${name}&room=${room}`}
       >
         <button
-          className="p-4 mt-4 text-white bg-green-700 rounded-md sm:text-sm md:text-lg hover:bg-green-900"
+          className="bg-green-700 text-white mt-4 sm:text-sm md:text-lg p-4 rounded-md hover:bg-green-900"
           type="submit"
         >
           Sign in
