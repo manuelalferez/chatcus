@@ -4,7 +4,7 @@ const http = require("http");
 const { addUser, removeUser, getUser, getUsersInRoom } = require("./users");
 const cors = require("cors");
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 
 const router = require("./router");
 
