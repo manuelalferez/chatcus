@@ -1,9 +1,9 @@
-import React from "react";
-import Message from "./Message";
+import '../styles/Messages.css';
 
-import ScrollToBottom from "react-scroll-to-bottom";
+import React from 'react';
+import ScrollToBottom from 'react-scroll-to-bottom';
 
-import "../styles/Messages.css";
+import Message from './Message';
 
 const Messages = ({ messages, name }) => (
   <ScrollToBottom className="overflow-auto w-5/6 md:w-4/6 lg:w-3/6 p-4 h-4/6 bg-white text-sm md:text-lg">

@@ -1,6 +1,6 @@
-import { motion } from "framer-motion";
-import React from "react";
-import sendIcon from "../../icons/sendIcon-green.png";
+import React from 'react';
+
+import sendIcon from '../assets/icons/sendIcon-green.png';
 
 const Input = ({ message, setMessage, sendMessage }) => {
   return (
@@ -10,7 +10,7 @@ const Input = ({ message, setMessage, sendMessage }) => {
         e.preventDefault();
         console.log(`Your message: ${message}`);
         sendMessage(message, () => {
-          setMessage("");
+          setMessage('');
         });
       }}
     >
@@ -21,11 +21,8 @@ const Input = ({ message, setMessage, sendMessage }) => {
         placeholder="Type a message..."
         className="p-4 w-full outline-none rounded-bl-xl text-gray-800"
       />
-      <button
-        type="submit"
-        className="p-4 rounded-br-xl hover:bg-green-100 transition duration-150 ease-in"
-      >
-        <img src={sendIcon} className="px-2 w-12 place-self-center" />
+      <button type="submit" className="p-4 rounded-br-xl hover:bg-green-100 transition duration-150 ease-in">
+        <img src={sendIcon} className="px-2 w-12 place-self-center" alt="Send Message" />
       </button>
     </form>
   );
