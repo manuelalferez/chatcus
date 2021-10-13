@@ -7,7 +7,7 @@ export const TextField = ({
   values: { fieldValue, error },
   actions: { setValue },
 }) => (
-  <div className={`relative h-12 overflow-visible textfield w-96 mb-5`}>
+  <div className={`relative h-12 overflow-visible textfield w-96 mb-5 mt-4`}>
     <input
       type={type}
       id={id}

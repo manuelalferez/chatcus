@@ -6,6 +6,7 @@ import { TextField } from './atoms/TextField';
 const Join = ({ location, history }) => {
   const [name, setName] = useState('');
   const [room, setRoom] = useState('');
+  const [pfpSrc, setPfpSrc] = useState('');
   const [errors, setErrors] = useState({ name: '', room: '' });
   useEffect(() => {
     const { room } = queryString.parse(location.search);
@@ -39,6 +40,15 @@ const Join = ({ location, history }) => {
             },
           }}
         />
+        <TextField
+          attributes={{ type: 'url', id: 'pfpSrc', name: 'pfpSrc', required: true, label: 'Profile Picture Link' }}
+          values={{ fieldValue: pfpSrc }}
+          actions={{
+            setValue: (e) => {
+              setPfpSrc(e.target.value);
+            },
+          }}
+        />
         <button
           onClick={(event) => {
             if (!name || !room) {
@@ -48,7 +58,7 @@ const Join = ({ location, history }) => {
               setErrors(err);
               return event.preventDefault();
             }
-            history.push(`/chat?name=${name}&room=${room}`);
+            history.push(`/chat?name=${name}&room=${room}&pfp=${pfpSrc}`);
           }}
           className="bg-green-700 text-white mt-4 sm:text-sm md:text-lg p-4 rounded-md hover:bg-green-900"
           type="button"
