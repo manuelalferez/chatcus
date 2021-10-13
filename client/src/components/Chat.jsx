@@ -14,18 +14,21 @@ const Chat = ({ location }) => {
   const [room, setRoom] = useState('');
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
-  const ENDPOINT = 'https://chatcus.herokuapp.com/';
+  const ENDPOINT = import.meta.env.MODE === 'development' ? 'http://localhost:8000/' : 'https://chatcus.herokuapp.com/';
 
   useEffect(() => {
-    const { name, room } = queryString.parse(location.search);
+    const { name, room, pfp: pfpSrc } = queryString.parse(location.search);
     setName(name);
     setRoom(room);
 
+    console.log(`ENDPOINT = ${ENDPOINT}`);
+
     socket = io(ENDPOINT, {
       transports: ['websocket'],
+      withCredentials: true,
     });
 
-    socket.emit('join', { name, room }, (error) => {
+    socket.emit('join', { name, room, pfpSrc }, (error) => {
       if (error) {
         alert(error);
       }
