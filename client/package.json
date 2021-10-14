@@ -1,15 +1,14 @@
 {
-  "name": "cra-minimum",
-  "version": "1.0.0",
-  "description": "Set up a modern web app by running one command without using create-react-app.",
-  "main": "src/index.js",
+  "name": "client",
+  "version": "0.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --mode=development --open --hot",
-    "build": "webpack --mode=production"
+    "start": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "lint:fix": "eslint ./src --ext .jsx,.js,.ts,.tsx --quiet --fix --ignore-path ./.gitignore",
+    "lint:format": "prettier  --loglevel warn --write \"./**/*.{js,jsx,ts,tsx,css,md,json}\" ",
+    "lint": "npm run lint:format && npm run lint:fix "
   },
-  "author": "Manuel Alférez",
-  "license": "ISC",
   "dependencies": {
     "emoji-mart": "^3.0.1",
     "framer-motion": "^4.1.17",
@@ -23,18 +22,18 @@
     "socket.io-client": "^4.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.15.5",
-    "@babel/preset-env": "^7.15.6",
-    "@babel/preset-react": "^7.14.5",
-    "autoprefixer": "^10.3.4",
-    "babel-loader": "^8.2.2",
-    "css-loader": "^6.2.0",
-    "html-webpack-plugin": "^5.3.2",
-    "postcss": "^8.3.6",
-    "style-loader": "^3.2.1",
-    "tailwindcss": "^2.2.15",
-    "webpack": "^5.52.1",
-    "webpack-cli": "^4.8.0",
-    "webpack-dev-server": "^4.2.0"
+    "@vitejs/plugin-react": "^1.0.0",
+    "autoprefixer": "^10.3.7",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "postcss": "^8.3.9",
+    "prettier": "^2.4.1",
+    "tailwindcss": "^2.2.16",
+    "vite": "^2.6.5"
   }
 }

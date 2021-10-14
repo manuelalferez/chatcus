@@ -1,13 +1,12 @@
-import React from "react";
+import { motion } from 'framer-motion';
+import React from 'react';
 
-import { motion } from "framer-motion";
-
-const Message = ({ message: { user, text }, name }) => {
+const Message = ({ message: { user, text, pfpSrc }, name }) => {
   let isSentByCurrentUser = false;
   let isAdmin = false;
 
   const trimmedName = name.trim().toLowerCase();
-  if (user === "admin") {
+  if (user === 'admin') {
     isAdmin = true;
   } else if (user === trimmedName) {
     isSentByCurrentUser = true;
@@ -15,7 +14,7 @@ const Message = ({ message: { user, text }, name }) => {
   return isSentByCurrentUser ? (
     // Current user's message
     <motion.div
-      initial={{ scale: 0, x: "70%", opacity: 0.3 }}
+      initial={{ scale: 0, x: '70%', opacity: 0.3 }}
       animate={{ scale: 1, x: 0, opacity: 1 }}
       className="grid grid-cols-6"
     >
@@ -27,9 +26,11 @@ const Message = ({ message: { user, text }, name }) => {
       </div>
       <div className="col-start-6 col-end-7 text-center">
         <img
-          className="inline object-cover w-8 h-8 rounded-full"
-          src="https://cdn-icons-png.flaticon.com/512/709/709722.png"
-          alt="Profile image"
+          className="inline object-cover w-14 h-14 rounded-full"
+          src={
+            pfpSrc || "https://cdn-icons-png.flaticon.com/512/709/709722.png"
+          }
+          alt={`Profile image-${user}`}
         />
         <br />
       </div>
@@ -48,14 +49,16 @@ const Message = ({ message: { user, text }, name }) => {
   ) : (
     // Other user's message
     <motion.div
-      initial={{ scale: 0, x: "-70%", opacity: 0.3 }}
+      initial={{ scale: 0, x: '-70%', opacity: 0.3 }}
       animate={{ scale: 1, x: 0, opacity: 1 }}
       className="grid grid-cols-6"
     >
       <div className="col-start-1 col-end-2 text-center">
         <img
-          className="inline object-cover w-8 h-8 rounded-full"
-          src="https://cdn-icons-png.flaticon.com/512/709/709722.png"
+          className="inline object-cover w-14 h-14 rounded-full"
+          src={
+            pfpSrc || "https://cdn-icons-png.flaticon.com/512/709/709722.png"
+          }
           alt="Profile image"
         />
         <br />

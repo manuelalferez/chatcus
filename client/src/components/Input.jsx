@@ -1,9 +1,11 @@
-import { motion } from "framer-motion";
-import React, { useRef, useState, useEffect } from "react";
-import sendIcon from "../../icons/sendIcon-green.png";
-import { Picker } from "emoji-mart";
-import "emoji-mart/css/emoji-mart.css";
-import { IoMdSend } from "react-icons/io";
+import { motion } from 'framer-motion';
+import React, { useRef, useState, useEffect } from 'react';
+// import sendIcon from '../../icons/sendIcon-green.png';
+import { Picker } from 'emoji-mart';
+import 'emoji-mart/css/emoji-mart.css';
+import { IoMdSend } from 'react-icons/io';
+
+import sendIcon from '../assets/icons/sendIcon-green.png';
 
 const Input = ({ message, setMessage, sendMessage }) => {
   const emojiRef = useRef();
@@ -20,12 +22,12 @@ const Input = ({ message, setMessage, sendMessage }) => {
         handler(event);
       };
 
-      document.addEventListener("mousedown", listener);
-      document.addEventListener("touchstart", listener);
+      document.addEventListener('mousedown', listener);
+      document.addEventListener('touchstart', listener);
 
       return () => {
-        document.removeEventListener("mousedown", listener);
-        document.removeEventListener("touchstart", listener);
+        document.removeEventListener('mousedown', listener);
+        document.removeEventListener('touchstart', listener);
       };
     }, [ref, handler]);
   }
@@ -37,7 +39,7 @@ const Input = ({ message, setMessage, sendMessage }) => {
         e.preventDefault();
         console.log(`Your message: ${message}`);
         sendMessage(message, () => {
-          setMessage("");
+          setMessage('');
         });
       }}
     >
@@ -51,22 +53,16 @@ const Input = ({ message, setMessage, sendMessage }) => {
       <div className="overflow-x-visible" ref={emojiRef}>
         {showEmoji && (
           <span className="absolute bottom-28 right-36">
-            <Picker
-              onSelect={(e) => setMessage(message + e.native)}
-              emojiTooltip={true}
-            />
+            <Picker onSelect={(e) => setMessage(message + e.native)} emojiTooltip={true} />
           </span>
         )}
         <p onClick={() => setShowEmoji(!showEmoji)} className="cursor-pointer">
           {String.fromCodePoint(0x1f60a)}
         </p>
       </div>
-      <button
-        type="submit"
-        className="p-4 rounded-br-xl hover:bg-green-100 transition duration-150 ease-in"
-      >
-        {/* <img src={sendIcon} className="px-2 w-12 place-self-center" /> */}
+      <button type="submit" className="p-4 rounded-br-xl hover:bg-green-100 transition duration-150 ease-in">
         <IoMdSend className="w-6 h-7" type="submit" />
+        {/* <img src={sendIcon} className="px-2 w-12 place-self-center" alt="Send Message" /> */}
       </button>
     </form>
   );

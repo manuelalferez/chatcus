@@ -1,4 +1,4 @@
-const checkNotificationSupport = () => typeof Notification === "undefined";
+const checkNotificationSupport = () => typeof Notification === 'undefined';
 
 export const requestPermission = () => {
   if (checkNotificationSupport()) return;
@@ -7,21 +7,17 @@ export const requestPermission = () => {
 
 export const showNotification = (message) => {
   if (checkNotificationSupport()) return;
-  if (
-    document.visibilityState === "hidden" &&
-    Notification.permission === "granted"
-  ) {
+  if (document.visibilityState === 'hidden' && Notification.permission === 'granted') {
     try {
-      const notification = new Notification(
-        `${message.user?.toUpperCase()} just send a message`,
-        {
-          body: message.text,
-        }
-      );
+      const notification = new Notification(`${message.user?.toUpperCase()} just send a message`, {
+        body: message.text,
+      });
       notification.onclick = () => {
         window.parent.focus();
         notification.close();
       };
-    } catch (error) {}
+    } catch (error) {
+      //
+    }
   }
 };
