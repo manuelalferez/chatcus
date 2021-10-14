@@ -1,0 +1,24 @@
+.textfield {
+  & label {
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+  }
+  & input:focus ~ label,
+  & input:not(:placeholder-shown) ~ label,
+  & textarea:focus ~ label,
+  & textarea:not(:placeholder-shown) ~ label,
+  & select:focus ~ label,
+  & select:not([value='']):valid ~ label {
+    top: 0%;
+    transform: translateY(-50%);
+    font-size: 11px;
+  }
+
+  & input:not(:focus) + label {
+    color: rgba(70, 70, 70, 1);
+  }
+  & input {
+    border-width: 1px;
+  }
+}

@@ -1,12 +1,13 @@
 import queryString from 'query-string';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 
-const Join = ({ location }) => {
-  const [name, setName] = useState("");
-  const [room, setRoom] = useState("");
-  const [pfpSrc, setPfpSrc] = useState("");
+import { TextField } from './atoms/TextField';
 
+const Join = ({ location, history }) => {
+  const [name, setName] = useState('');
+  const [room, setRoom] = useState('');
+  const [pfpSrc, setPfpSrc] = useState('');
+  const [errors, setErrors] = useState({ name: '', room: '' });
   useEffect(() => {
     const { room } = queryString.parse(location.search);
     console.log(queryString.parse(location.search));
@@ -17,47 +18,54 @@ const Join = ({ location }) => {
   return (
     <div className="flex flex-col items-center h-screen">
       <h1 className="sm:text-3xl md:text-5xl mt-40 mb-10 overflow-y-hidden">Welcome to Chatcus!</h1>
-      <div className="flex flex-col sm:text-sm md:text-lg">
-        <input
-          placeholder="Name"
-          className="w-70 mb-2 p-2 bg-green-100 outline-none"
-          type="text"
-          onChange={(event) => {
-            setName(event.target.value);
+
+      <form id="form" noValidate className="flex flex-col sm:text-sm md:text-lg overflow-visible" autoComplete="off">
+        <TextField
+          attributes={{ type: 'text', id: 'name', name: 'name', required: true, label: 'Name' }}
+          values={{ fieldValue: name, error: errors.name }}
+          actions={{
+            setValue: (e) => {
+              setName(e.target.value);
+              setErrors((errors) => ({ ...errors, name: '' }));
+            },
           }}
-          required
-        ></input>
-        <input
-          placeholder="Room"
-          className="w-70 mb-2 p-2 bg-green-100 outline-none"
-          type="text"
-          value={room}
-          onChange={(event) => {
-            setRoom(event.target.value);
+        />
+        <TextField
+          attributes={{ type: 'text', id: 'room', name: 'room', required: true, label: 'Room' }}
+          values={{ fieldValue: room, error: errors.room }}
+          actions={{
+            setValue: (e) => {
+              setRoom(e.target.value);
+              setErrors((errors) => ({ ...errors, room: '' }));
+            },
           }}
-          required
-        ></input>
-        <input
-          placeholder="Profile Pic Link"
-          className="w-70 p-2 bg-green-100 outline-none"
-          type="text"
-          value={pfpSrc}
-          onChange={(event) => {
-            setPfpSrc(event.target.value);
+        />
+        <TextField
+          attributes={{ type: 'url', id: 'pfpSrc', name: 'pfpSrc', required: true, label: 'Profile Picture Link' }}
+          values={{ fieldValue: pfpSrc }}
+          actions={{
+            setValue: (e) => {
+              setPfpSrc(e.target.value);
+            },
           }}
-        ></input>
-      </div>
-      <Link
-        onClick={(event) => (!name || !room ? event.preventDefault() : null)}
-        to={`/chat?name=${name}&room=${room}&pfp=${pfpSrc}`}
-      >
+        />
         <button
+          onClick={(event) => {
+            if (!name || !room) {
+              const err = { name: '', room: '' };
+              if (!name) err.name = 'Name is Required';
+              if (!room) err.room = 'Room is Required';
+              setErrors(err);
+              return event.preventDefault();
+            }
+            history.push(`/chat?name=${name}&room=${room}&pfp=${pfpSrc}`);
+          }}
           className="bg-green-700 text-white mt-4 sm:text-sm md:text-lg p-4 rounded-md hover:bg-green-900"
-          type="submit"
+          type="button"
         >
           Sign in
         </button>
-      </Link>
+      </form>
     </div>
   );
 };
