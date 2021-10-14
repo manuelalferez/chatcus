@@ -3,6 +3,7 @@ import React, { useRef, useState, useEffect } from "react";
 import sendIcon from "../../icons/sendIcon-green.png";
 import { Picker } from "emoji-mart";
 import "emoji-mart/css/emoji-mart.css";
+import { IoMdSend } from "react-icons/io";
 
 const Input = ({ message, setMessage, sendMessage }) => {
   const emojiRef = useRef();
@@ -64,7 +65,8 @@ const Input = ({ message, setMessage, sendMessage }) => {
         type="submit"
         className="p-4 rounded-br-xl hover:bg-green-100 transition duration-150 ease-in"
       >
-        <img src={sendIcon} className="px-2 w-12 place-self-center" />
+        {/* <img src={sendIcon} className="px-2 w-12 place-self-center" /> */}
+        <IoMdSend className="w-6 h-7" type="submit" />
       </button>
     </form>
   );
