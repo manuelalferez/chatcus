@@ -14,7 +14,7 @@ const Chat = ({ location }) => {
   const [room, setRoom] = useState('');
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
-  const ENDPOINT = import.meta.env.VITE_ENDPOINT;
+  const ENDPOINT = 'https://dev-dlpvkpimfa-uc.a.run.app';
 
   useEffect(() => {
     const { name, room, pfp: pfpSrc } = queryString.parse(location.search);
