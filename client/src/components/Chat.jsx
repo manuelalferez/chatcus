@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 
 import { showNotification } from '../utils/notification';
+import { clearSavedChat, getAllData, storeData } from '../utils/store';
 import InfoBar from './InfoBar';
 import Input from './Input';
 import Messages from './Messages';
@@ -22,7 +23,7 @@ const Chat = ({ location }) => {
     setName(name);
     setRoom(room);
 
-    console.log(`ENDPOINT = ${ENDPOINT}`);
+    getMessagesFromLocalStorage(room);
 
     socket = io(ENDPOINT, {
       transports: ['websocket'],
@@ -44,6 +45,7 @@ const Chat = ({ location }) => {
   useEffect(() => {
     socket.on('message', (message) => {
       showNotification(message);
+      storeData(message);
       setMessages((messages) => [...messages, message]);
     });
   }, []);
@@ -51,6 +53,22 @@ const Chat = ({ location }) => {
   const sendMessage = (message, callback) => {
     if (message) {
       socket.emit('sendMessage', message, () => callback());
+    }
+  };
+
+  const getMessagesFromLocalStorage = async (room) => {
+    const storedRoom = localStorage.getItem('room');
+    console.log(storedRoom, room);
+    if (!storedRoom) {
+      localStorage.setItem('room', room);
+    } else if (storedRoom === room) {
+      const chatData = await getAllData();
+      if (Array.isArray(chatData) && chatData.length > 0) {
+        setMessages((messages) => [...messages, ...chatData]);
+      }
+    } else {
+      await clearSavedChat();
+      localStorage.setItem('room', room);
     }
   };
 
