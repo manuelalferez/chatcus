@@ -45,7 +45,7 @@
 
 
 
-![](https://i.ibb.co/SmFRsjh/BG-00-4.png)
+![](https://ik.imagekit.io/manuelalferez/chatcus/demo_WNN07DC8OG.png?updatedAt=1634727176954)
 
 ## Technologies 
 
