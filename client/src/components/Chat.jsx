@@ -6,6 +6,7 @@ import { showNotification } from '../utils/notification';
 import InfoBar from './InfoBar';
 import Input from './Input';
 import Messages from './Messages';
+import Navbar from './Navbar';
 
 let socket;
 
@@ -55,10 +56,13 @@ const Chat = ({ location }) => {
   };
 
   return (
-    <div className="flex flex-col items-center pt-16 bg-green-50 h-screen">
-      <InfoBar room={room} name={name} />
-      <Messages messages={messages} name={name} />
-      <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
+    <div>
+      <Navbar />
+      <div className="flex flex-col items-center pt-16 bg-green-50 h-screen w-screen pt-32 overflow-y-hidden">
+        <InfoBar room={room} name={name} />
+        <Messages messages={messages} name={name} />
+        <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
+      </div>
     </div>
   );
 };

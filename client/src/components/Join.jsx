@@ -2,6 +2,7 @@ import queryString from 'query-string';
 import React, { useEffect, useState } from 'react';
 
 import { TextField } from './atoms/TextField';
+import Navbar from './Navbar';
 
 const Join = ({ location, history }) => {
   const [name, setName] = useState('');
@@ -17,6 +18,7 @@ const Join = ({ location, history }) => {
   }, []);
   return (
     <div className="flex flex-col items-center h-screen">
+      <Navbar />
       <h1 className="sm:text-3xl md:text-5xl mt-40 mb-10 overflow-y-hidden">Welcome to Chatcus!</h1>
 
       <form id="form" noValidate className="flex flex-col sm:text-sm md:text-lg overflow-visible" autoComplete="off">
