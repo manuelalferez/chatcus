@@ -3,8 +3,9 @@
 <p align="center"><i>A real-time chat application using React.js and Socket.IO</i></p>
 
 <div align="center">
-	<img src="https://i.ibb.co/P9M1kNb/parth-shah-cactus-render-edited-removebg-preview-1.png" height="70px"/>
+	<img src="https://ik.imagekit.io/manuelalferez/chatcus/tr:w-0.4/logo-with-bg_UCfO7P4lIm.png"/>
 </div>
+
 
 ## Installation 
 
