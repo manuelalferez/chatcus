@@ -1,11 +1,7 @@
-<h1 align="center">Chatcus</h1>
-
-<p align="center"><i>A real-time chat application using React.js and Socket.IO</i></p>
-
 <div align="center">
 	<img src="https://ik.imagekit.io/manuelalferez/chatcus/tr:w-0.4/logo-with-bg_UCfO7P4lIm.png"/>
 </div>
-
+<p align="center"><i>A real-time chat application using React.js and Socket.IO</i></p>
 
 ## Installation 
 
