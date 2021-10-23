@@ -10,7 +10,7 @@ const Navbar = () => {
         className="flex items-center rounded-md border-green-700 border-2 p-2 hover:text-black hover:bg-green-50"
       >
         <img src="https://ik.imagekit.io/manuelalferez/chatcus/github_7y-K8IT6TGe.svg?updatedAt=1634803536227" />
-        <spam className="pl-2">GitHub</spam>
+        <span className="pl-2">GitHub</span>
       </a>
     </div>
   );

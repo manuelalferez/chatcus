@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 
 import { showNotification } from '../utils/notification';
+import useStore from '../utils/store';
 import InfoBar from './InfoBar';
 import Input from './Input';
 import Messages from './Messages';
@@ -11,18 +12,14 @@ import Navbar from './Navbar';
 let socket;
 
 const Chat = ({ location }) => {
-  const [name, setName] = useState('');
-  const [room, setRoom] = useState('');
   const [message, setMessage] = useState('');
-  const [messages, setMessages] = useState([]);
+
+  const { name, room, pfpSrc, messages, setRoommates, addMessage, resetStore } = useStore((state) => state);
+
   const ENDPOINT =
     import.meta.env.MODE === 'development' ? 'http://localhost:8000/' : 'https://chatcus-prod-dlpvkpimfa-uc.a.run.app';
 
   useEffect(() => {
-    const { name, room, pfp: pfpSrc } = queryString.parse(location.search);
-    setName(name);
-    setRoom(room);
-
     console.log(`ENDPOINT = ${ENDPOINT}`);
 
     socket = io(ENDPOINT, {
@@ -37,6 +34,8 @@ const Chat = ({ location }) => {
     });
 
     return () => {
+      resetStore();
+
       socket.emit('disconnect');
       socket.off();
     };
@@ -45,7 +44,9 @@ const Chat = ({ location }) => {
   useEffect(() => {
     socket.on('message', (message) => {
       showNotification(message);
-      setMessages((messages) => [...messages, message]);
+      addMessage(message);
+
+      if (message.user === 'admin') setRoommates(message.roommates);
     });
   }, []);
 

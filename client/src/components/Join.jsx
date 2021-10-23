@@ -1,5 +1,6 @@
 import queryString from 'query-string';
 import React, { useEffect, useState } from 'react';
+import useStore from '../utils/store';
 
 import { TextField } from './atoms/TextField';
 import Navbar from './Navbar';
@@ -8,6 +9,9 @@ const Join = ({ location, history }) => {
   const [name, setName] = useState('');
   const [room, setRoom] = useState('');
   const [pfpSrc, setPfpSrc] = useState('');
+
+  const store = useStore((state) => state);
+
   const [errors, setErrors] = useState({ name: '', room: '' });
   useEffect(() => {
     const { room } = queryString.parse(location.search);
@@ -60,7 +64,13 @@ const Join = ({ location, history }) => {
               setErrors(err);
               return event.preventDefault();
             }
-            history.push(`/chat?name=${name}&room=${room}&pfp=${pfpSrc}`);
+
+            // Set state in store
+            store.setName(name);
+            store.setRoom(room);
+            store.setPfpSrc(pfpSrc || `https://robohash.org/${name.split(' ').join('-')}?set=set4`);
+
+            history.push(`/chat`);
           }}
           className="bg-green-700 text-white mt-4 sm:text-sm md:text-lg p-4 rounded-md hover:bg-green-900"
           type="button"

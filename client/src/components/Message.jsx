@@ -25,13 +25,7 @@ const Message = ({ message: { user, text, pfpSrc }, name }) => {
         </div>
       </div>
       <div className="col-start-6 col-end-7 text-center">
-        <img
-          className="inline object-cover w-14 h-14 rounded-full"
-          src={
-            pfpSrc || "https://cdn-icons-png.flaticon.com/512/709/709722.png"
-          }
-          alt={`Profile image-${user}`}
-        />
+        <img className="inline object-cover w-14 h-14 rounded-full" src={pfpSrc} alt={`Profile image-${user}`} />
         <br />
       </div>
     </motion.div>
@@ -54,13 +48,7 @@ const Message = ({ message: { user, text, pfpSrc }, name }) => {
       className="grid grid-cols-6"
     >
       <div className="col-start-1 col-end-2 text-center">
-        <img
-          className="inline object-cover w-14 h-14 rounded-full"
-          src={
-            pfpSrc || "https://cdn-icons-png.flaticon.com/512/709/709722.png"
-          }
-          alt="Profile image"
-        />
+        <img className="inline object-cover w-14 h-14 rounded-full" src={pfpSrc} alt="Profile image" />
         <br />
       </div>
       <div className="col-start-2 col-end-7">

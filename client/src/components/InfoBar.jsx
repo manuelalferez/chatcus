@@ -51,7 +51,7 @@ const InfoBar = ({ room, name }) => {
       </div>
       {showCloseModal && (
         <Modal
-          data={{ header: 'You are about to exist the chat room' }}
+          data={{ header: 'You are about to exit the chat room' }}
           actions={{
             onCancel: () => setShowCloseModal(false),
             onConfirm: () => history.push('/'),
