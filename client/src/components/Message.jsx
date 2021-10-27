@@ -16,15 +16,15 @@ const Message = ({ message: { user, text, pfpSrc }, name }) => {
     <motion.div
       initial={{ scale: 0, x: '70%', opacity: 0.3 }}
       animate={{ scale: 1, x: 0, opacity: 1 }}
-      className="grid grid-cols-6"
+      className="flex gap-3 items-center px-3"
     >
-      <div className="col-start-1 col-end-6">
+      <div className="flex-grow">
         <div className="flex flex-col ml-auto p-2 rounded-t-xl rounded-l-xl bg-green-100 shadow-md m-2 w-max max-w-xs lg:max-w-lg overflow-hidden">
           <p className="text-green-900 text-sm font-semibold">{trimmedName}</p>
           <p className="pr-2 text-gray-600">{text}</p>
         </div>
       </div>
-      <div className="col-start-6 col-end-7 text-center">
+      <div className="flex-shrink">
         <img className="inline object-cover w-14 h-14 rounded-full" src={pfpSrc} alt={`Profile image-${user}`} />
         <br />
       </div>
@@ -45,13 +45,13 @@ const Message = ({ message: { user, text, pfpSrc }, name }) => {
     <motion.div
       initial={{ scale: 0, x: '-70%', opacity: 0.3 }}
       animate={{ scale: 1, x: 0, opacity: 1 }}
-      className="grid grid-cols-6"
+      className="flex gap-3 items-center px-3"
     >
-      <div className="col-start-1 col-end-2 text-center">
+      <div className="flex-shrink">
         <img className="inline object-cover w-14 h-14 rounded-full" src={pfpSrc} alt="Profile image" />
         <br />
       </div>
-      <div className="col-start-2 col-end-7">
+      <div className="flex-grow">
         <div className="flex flex-col items-start p-2 rounded-t-xl rounded-r-xl w-max max-w-xs bg-green-500 shadow-md text-white m-2 overflow-hidden lg:max-w-lg">
           <p className="text-sm font-semibold">{user}</p>
           <p className="pr-2">{text}</p>

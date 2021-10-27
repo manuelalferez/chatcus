@@ -47,7 +47,8 @@ io.on("connection", (socket) => {
     });
     callback();
   });
-  socket.on("disconnect", () => {
+
+  const leaveRoom = () => {
     const user = removeUser(socket.id);
     if (user) {
       io.to(user.room).emit("message", {
@@ -56,7 +57,11 @@ io.on("connection", (socket) => {
         roommates: getUsersInRoom(user.room),
       });
     }
-  });
+  };
+
+  socket.on("leave", leaveRoom);
+
+  socket.on("disconnect", leaveRoom);
 });
 
 app.use(router);

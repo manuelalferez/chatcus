@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import closeIcon from '../assets/icons/closeIcon.png';
 import onlineIcon from '../assets/icons/onlineIcon.png';
 import { requestPermission } from '../utils/notification';
+import useStore from '../utils/store';
 import { Modal } from './atoms/Modal';
 import { NotificationBar } from './atoms/Notification';
 import { ShareButton } from './Share';
@@ -12,6 +13,7 @@ const InfoBar = ({ room, name }) => {
   const history = useHistory();
   const [showPermissionMsg, setShowPermissionMsg] = useState(false);
   const [showCloseModal, setShowCloseModal] = useState(false);
+  const resetStore = useStore((state) => state.resetStore);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -34,10 +36,15 @@ const InfoBar = ({ room, name }) => {
           }}
         />
       ) : null}
-      <div className="flex justify-between items-center w-5/6 md:w-4/6 lg:w-3/6 bg-white rounded-t-xl p-4 shadow-t-3xl pt-6 border-b-2 border-blue-50">
+      <div
+        className="flex justify-between items-center
+        w-full overflow-y-hidden
+        bg-white rounded-t-xl p-4 pl-2
+        border-b-2 border-blue-50"
+      >
         <div className="flex items-center">
           <img src={onlineIcon} alt="online" className="h-3 ml-5 place-self-center" />
-          <h3 className="ml-1 place-self-center">{room}</h3>
+          <h3 className="mx-2 place-self-center text-lg text-gray-600 font-semibold">{room}</h3>
           <ShareButton
             link={`${window.location.origin}/#/?room=${room}`}
             text={`Hey! ${name} invites you to join ${room} Chat Room on Chatcus`}
@@ -54,7 +61,10 @@ const InfoBar = ({ room, name }) => {
           data={{ header: 'You are about to exit the chat room' }}
           actions={{
             onCancel: () => setShowCloseModal(false),
-            onConfirm: () => history.push('/'),
+            onConfirm: () => {
+              resetStore();
+              history.push('/');
+            },
           }}
         />
       )}
