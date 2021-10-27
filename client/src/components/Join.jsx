@@ -55,8 +55,8 @@ const Join = ({ location, history }) => {
           onClick={(event) => {
             if (!name || !room) {
               const err = { name: '', room: '' };
-              if (!name) err.name = 'Name is Required';
-              if (!room) err.room = 'Room is Required';
+              if (!name) err.name = 'Required: Name';
+              if (!room) err.room = 'Required: Room';
               setErrors(err);
               return event.preventDefault();
             }
