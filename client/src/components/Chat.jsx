@@ -35,9 +35,7 @@ const Chat = ({ location }) => {
     });
 
     return () => {
-      resetStore();
-
-      socket.emit('disconnect');
+      socket.emit('leave');
       socket.off();
     };
   }, [ENDPOINT, location.search]);
@@ -73,8 +71,8 @@ const Chat = ({ location }) => {
           rounded-xl"
         >
           <InfoBar room={room} name={name} />
-          <div className="grid grid-cols-4 w-full h-full">
-            <div className="col-span-3 flex flex-col border-r-2 border-blue-50">
+          <div className="grid grid-cols-5 w-full h-full">
+            <div className="col-span-4 flex flex-col border-r-2 border-blue-50">
               <Messages messages={messages} name={name} />
               <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
             </div>

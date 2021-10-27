@@ -5,7 +5,7 @@ import sendIcon from '../assets/icons/sendIcon-green.png';
 const Input = ({ message, setMessage, sendMessage }) => {
   return (
     <form
-      className="flex justify-between items-center bg-white shadow-xl w-full border-t-4 border-blue-50"
+      className="flex justify-between items-center bg-white shadow-xl w-full border-t-4 border-blue-50 h-16"
       onSubmit={(e) => {
         e.preventDefault();
         console.log(`Your message: ${message}`);
@@ -19,10 +19,10 @@ const Input = ({ message, setMessage, sendMessage }) => {
         value={message}
         onChange={(event) => setMessage(event.target.value)}
         placeholder="Type a message..."
-        className="p-4 w-full outline-none text-gray-500 font-medium"
+        className="w-full h-full px-4 outline-none text-gray-600 font-medium"
       />
-      <button type="submit" className="p-4 hover:bg-green-100 transition duration-150 ease-in">
-        <img src={sendIcon} className="px-2 w-12 place-self-center" alt="Send Message" />
+      <button type="submit" className="px-6 h-full hover:bg-green-100 transition duration-150 ease-in">
+        <img src={sendIcon} className="w-8 h-8 place-self-center" alt="Send Message" />
       </button>
     </form>
   );

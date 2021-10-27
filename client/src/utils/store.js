@@ -22,6 +22,7 @@ const useStore = create(
       }),
       {
         name: 'chatcus-storage',
+        getStorage: () => sessionStorage,
       },
     ),
   ),

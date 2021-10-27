@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import closeIcon from '../assets/icons/closeIcon.png';
 import onlineIcon from '../assets/icons/onlineIcon.png';
 import { requestPermission } from '../utils/notification';
+import useStore from '../utils/store';
 import { Modal } from './atoms/Modal';
 import { NotificationBar } from './atoms/Notification';
 import { ShareButton } from './Share';
@@ -12,6 +13,7 @@ const InfoBar = ({ room, name }) => {
   const history = useHistory();
   const [showPermissionMsg, setShowPermissionMsg] = useState(false);
   const [showCloseModal, setShowCloseModal] = useState(false);
+  const resetStore = useStore((state) => state.resetStore);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -59,7 +61,10 @@ const InfoBar = ({ room, name }) => {
           data={{ header: 'You are about to exit the chat room' }}
           actions={{
             onCancel: () => setShowCloseModal(false),
-            onConfirm: () => history.push('/'),
+            onConfirm: () => {
+              resetStore();
+              history.push('/');
+            },
           }}
         />
       )}
