@@ -15,6 +15,8 @@ const Join = ({ location, history }) => {
   const [errors, setErrors] = useState({ name: '', room: '' });
   useEffect(() => {
     store.resetStore();
+
+    const { room } = queryString.parse(location.search);
     if (room) {
       setRoom(room);
     }
