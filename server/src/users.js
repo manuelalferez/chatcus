@@ -8,7 +8,7 @@ const addUser = ({ id, name, room, pfpSrc }) => {
     (user) => user.room === room && user.name === name
   );
 
-  if (!name || !room) return { error: "Username and room are required." };
+  if (!name || !room) return { error: "Required: Username and Room" };
   if (existingUser) return { error: "Username is taken." };
 
   const user = { id, name, room, pfpSrc };
