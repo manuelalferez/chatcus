@@ -3,26 +3,24 @@ import React, { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 
 import { showNotification } from '../utils/notification';
+import useStore from '../utils/store';
 import InfoBar from './InfoBar';
 import Input from './Input';
 import Messages from './Messages';
 import Navbar from './Navbar';
+import Roommates from './Roommates';
 
 let socket;
 
 const Chat = ({ location }) => {
-  const [name, setName] = useState('');
-  const [room, setRoom] = useState('');
   const [message, setMessage] = useState('');
-  const [messages, setMessages] = useState([]);
+
+  const { name, room, pfpSrc, messages, setRoommates, addMessage, resetStore } = useStore((state) => state);
+
   const ENDPOINT =
     import.meta.env.MODE === 'development' ? 'http://localhost:8000/' : 'https://chatcus-prod-dlpvkpimfa-uc.a.run.app';
 
   useEffect(() => {
-    const { name, room, pfp: pfpSrc } = queryString.parse(location.search);
-    setName(name);
-    setRoom(room);
-
     console.log(`ENDPOINT = ${ENDPOINT}`);
 
     socket = io(ENDPOINT, {
@@ -37,7 +35,7 @@ const Chat = ({ location }) => {
     });
 
     return () => {
-      socket.emit('disconnect');
+      socket.emit('leave');
       socket.off();
     };
   }, [ENDPOINT, location.search]);
@@ -45,7 +43,9 @@ const Chat = ({ location }) => {
   useEffect(() => {
     socket.on('message', (message) => {
       showNotification(message);
-      setMessages((messages) => [...messages, message]);
+      addMessage(message);
+
+      if (message.user === 'admin') setRoommates(message.roommates);
     });
   }, []);
 
@@ -56,12 +56,31 @@ const Chat = ({ location }) => {
   };
 
   return (
-    <div>
+    <div className="w-screen h-screen bg-green-50">
       <Navbar />
-      <div className="flex flex-col items-center pt-16 bg-green-50 h-screen w-screen pt-32 overflow-y-hidden">
-        <InfoBar room={room} name={name} />
-        <Messages messages={messages} name={name} />
-        <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
+      <div
+        className="w-screen h-full flex items-center justify-center
+        overflow-hidden"
+      >
+        <div
+          className="relative top-12
+          flex flex-col items-center
+          h-5/6 w-5/6
+          shadow-xl
+          overflow-hidden
+          rounded-xl"
+        >
+          <InfoBar room={room} name={name} />
+          <div className="grid grid-cols-5 w-full h-full">
+            <div className="col-span-4 flex flex-col border-r-2 border-blue-50">
+              <Messages messages={messages} name={name} />
+              <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
+            </div>
+            <div className="col-span-1 bg-white">
+              <Roommates />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

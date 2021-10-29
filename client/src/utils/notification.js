@@ -11,6 +11,7 @@ export const showNotification = (message) => {
     try {
       const notification = new Notification(`${message.user?.toUpperCase()} just send a message`, {
         body: message.text,
+        icon: message.pfpSrc,
       });
       notification.onclick = () => {
         window.parent.focus();

@@ -21,15 +21,20 @@ io.on("connection", (socket) => {
       return callback(error);
     }
 
+    const roommates = getUsersInRoom(user.room);
+
     socket.join(user.room);
     socket.emit("message", {
       user: "admin",
       text: `${user.name} welcome to the room ${user.room}`,
+      roommates,
     });
 
-    socket.broadcast
-      .to(user.room)
-      .emit("message", { user: "admin", text: `${user.name} has joined!` });
+    socket.broadcast.to(user.room).emit("message", {
+      user: "admin",
+      text: `${user.name} has joined!`,
+      roommates,
+    });
     callback();
   });
 
@@ -42,15 +47,21 @@ io.on("connection", (socket) => {
     });
     callback();
   });
-  socket.on("disconnect", () => {
+
+  const leaveRoom = () => {
     const user = removeUser(socket.id);
     if (user) {
       io.to(user.room).emit("message", {
         user: "admin",
         text: `${user.name} has left`,
+        roommates: getUsersInRoom(user.room),
       });
     }
-  });
+  };
+
+  socket.on("leave", leaveRoom);
+
+  socket.on("disconnect", leaveRoom);
 });
 
 app.use(router);
