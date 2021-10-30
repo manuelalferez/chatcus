@@ -10,7 +10,7 @@ export const NotificationBar = ({ variant, header, message, onClose, onBodyClick
   const color = VARIANTS[variant];
   return (
     <div
-      className={`bg-${color}-100 border border-${color}-400 text-${color}-700 px-4 py-3 rounded relative`}
+      className={`bg-${color}-100 border border-${color}-400 text-${color}-700 px-4 py-3 rounded relative overflow-hidden`}
       role="alert"
     >
       <strong className="font-bold mr-1.5">{header}</strong>
@@ -41,7 +41,7 @@ export const NotificationBar = ({ variant, header, message, onClose, onBodyClick
             e.stopPropagation();
             e.key === 'Enter' && onClose(e);
           }}
-          className="absolute top-0 bottom-0 right-0 px-4 py-3"
+          className="absolute top-0 bottom-0 right-0 px-4 py-3 overflow-hidden"
         >
           <svg
             className={`fill-current h-6 w-6 text-${color}-500`}

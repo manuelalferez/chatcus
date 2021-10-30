@@ -8,12 +8,14 @@ import InfoBar from './InfoBar';
 import Input from './Input';
 import Messages from './Messages';
 import Navbar from './Navbar';
+import Typers from './Typers';
 import Roommates from './Roommates';
 
 let socket;
 
 const Chat = ({ location }) => {
   const [message, setMessage] = useState('');
+  const [typers, setTypers] = useState(new Set());
 
   const { name, room, pfpSrc, messages, setRoommates, addMessage, resetStore } = useStore((state) => state);
 
@@ -51,8 +53,42 @@ const Chat = ({ location }) => {
 
   const sendMessage = (message, callback) => {
     if (message) {
+      timeoutHandler();
       socket.emit('sendMessage', message, () => callback());
     }
+  };
+
+  useEffect(() => {
+    socket.on('typing', ({ user, typing }) => {
+      console.log(`${user} has ${typing ? 'started' : 'stopped'} typing.`);
+      if (typing) setTypers((_typers) => new Set(_typers).add(user));
+      else
+        setTypers((_typers) => {
+          const dummy = new Set(_typers);
+          dummy.delete(user);
+          return dummy;
+        });
+    });
+  }, []);
+
+  const timeoutHandler = () => {
+    document.typing = false;
+    clearTimeout(document.timeout);
+    console.log('Timeout for typing finished...');
+    document.timeout = null;
+    socket.emit('sendTyping', document.typing);
+  };
+
+  const onChange = (e) => {
+    setMessage(e.target.value);
+    document.typing = true;
+    if (document.timeout) {
+      console.log('Already started writing...');
+    } else {
+      socket.emit('sendTyping', document.typing);
+    }
+    clearTimeout(document.timeout);
+    document.timeout = setTimeout(timeoutHandler, 4000);
   };
 
   return (
@@ -74,7 +110,8 @@ const Chat = ({ location }) => {
           <div className="grid grid-cols-5 w-full h-full">
             <div className="col-span-4 flex flex-col border-r-2 border-blue-50">
               <Messages messages={messages} name={name} />
-              <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
+              <Typers typers={typers} />
+              <Input message={message} setMessage={setMessage} sendMessage={sendMessage} onChange={onChange} />
             </div>
             <div className="col-span-1 bg-white">
               <Roommates />
