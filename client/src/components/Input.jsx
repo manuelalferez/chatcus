@@ -2,7 +2,7 @@ import React from 'react';
 
 import sendIcon from '../assets/icons/sendIcon-green.png';
 
-const Input = ({ message, setMessage, sendMessage }) => {
+const Input = ({ message, setMessage, sendMessage, onChange }) => {
   return (
     <form
       className="flex justify-between items-center bg-white shadow-xl w-full border-t-4 border-blue-50 h-16"
@@ -17,7 +17,7 @@ const Input = ({ message, setMessage, sendMessage }) => {
       <input
         type="text"
         value={message}
-        onChange={(event) => setMessage(event.target.value)}
+        onChange={(event) => onChange(event)}
         placeholder="Type a message..."
         className="w-full h-full px-4 outline-none text-gray-600 font-medium"
       />
