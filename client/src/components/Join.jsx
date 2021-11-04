@@ -22,11 +22,18 @@ const Join = ({ location, history }) => {
     }
   }, []);
   return (
-    <div className="flex flex-col items-center h-screen">
+    <div className="flex flex-col items-center h-screen bg-green-50">
       <Navbar />
-      <h1 className="sm:text-3xl md:text-5xl mt-40 mb-10 overflow-y-hidden">Welcome to Chatcus!</h1>
+      <h1 className="text-3xl md:text-5xl mt-40 mb-10 overflow-y-hidden text-green-700 font-pacifico">
+        Welcome to Chatcus!
+      </h1>
 
-      <form id="form" noValidate className="flex flex-col sm:text-sm md:text-lg overflow-visible" autoComplete="off">
+      <form
+        id="form"
+        noValidate
+        className="flex flex-col sm:text-sm md:text-lg overflow-visible bg-green-50"
+        autoComplete="off"
+      >
         <TextField
           attributes={{ type: 'text', id: 'name', name: 'name', required: true, label: 'Name' }}
           values={{ fieldValue: name, error: errors.name }}
