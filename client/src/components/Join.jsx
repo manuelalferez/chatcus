@@ -24,7 +24,7 @@ const Join = ({ location, history }) => {
   return (
     <div className="flex flex-col items-center h-screen bg-green-50">
       <Navbar />
-      <h1 className="text-3xl md:text-5xl mt-40 mb-10 overflow-y-hidden text-green-700 font-pacifico">
+      <h1 className="text-3xl md:text-6xl mt-32 h-24 md:h-28 mb-10 md:p-2 overflow-y-hidden text-green-700 font-pacifico">
         Welcome to Chatcus!
       </h1>
 
@@ -86,6 +86,10 @@ const Join = ({ location, history }) => {
           Sign in
         </button>
       </form>
+      <img
+        src="https://ik.imagekit.io/manuelalferez/chatcus/chatcus-logo_sCZmSyqGThv.png?updatedAt=1636049348436"
+        className="pt-32"
+      />
     </div>
   );
 };
