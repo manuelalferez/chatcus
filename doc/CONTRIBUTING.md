@@ -1,6 +1,6 @@
 # Contributing
 
-When contributing to this repository, please first discuss the change you wish to make [**creating an issue**](https://github.com/manuelalferez/chatcus/issues).
+When contributing to this repository, please first discuss the change you wish to make [**creating an issue**](https://github.com/manuelalferez/flowinance/issues).
 
 
 
